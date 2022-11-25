@@ -1,5 +1,6 @@
 ## Trabalho do final do 2° Período 
 E-commerce feito com DJANGO, HTML e CSS
+Alunos: Rafael Ramalho Rosa, Lucas Sales, Bryan
 
 ### Iniciar Projeto
 /python manage.py runserver
