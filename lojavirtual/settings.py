@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'produtos',
     'stdimage',
     'carrinho',
+    'pedidos',
 ]
 
 MIDDLEWARE = [
@@ -56,6 +57,15 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 ID_CARRINHO = 'carrinho'
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'index'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = '21800014@aluno.cotemig.com.br'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_PASSWORD = 'rafael01'
+
 
 ROOT_URLCONF = 'lojavirtual.urls'
 
@@ -70,6 +80,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+            
+                'carrinho.context_processors.carrinho'
             ],
         },
     },

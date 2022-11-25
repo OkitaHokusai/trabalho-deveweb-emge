@@ -1,5 +1,43 @@
-<nav>
+<nav class="barrinha">
     <a href="/">Página Principal</a> |
+    <a href="/produtos">Produtos</a> |
     <a href="/contato">Entre em contato</a> |
-    <a href="/sobre">Sobre nós</a> |
+    <a href="/sobre">Sobre nós</a>|
+    {% if not user.is_anonymous %}
+        <a href="/admin/auth/user/">Usuários</a>|
+        <a href="/admin/produtos/produto/">Cadastrar Produtos</a>|
+        <a href="/admin/produtos/categoria/">Cadastrar Categoria</a>|
+        <a href="/admin/pedidos/pedido/">Pedidos</a>|
+    {% endif %}
+    
 </nav>
+<h4>{% with quantidade_itens=carrinho|length %}
+    {% if quantidade_itens > 0 %}
+    Seu carrinho de compras:
+    <a href="{% url 'carrinho:detalhes_carrinho' %}">{{ quantidade_itens }}
+        produto{{ quantidade_itens|pluralize }} - R${{ carrinho.get_total_geral }}</a>
+    {% else %}
+    Seu carrinho está vazio.
+    {% endif %}
+    {% endwith %}
+</h4>
+<style>
+    .barrinha{
+        background-color: #d4b123;
+        padding: 20px;
+        margin-bottom: 10px;
+    }
+
+    .barrinha a{
+        color: black;
+        text-decoration: none;
+        font-size: 1.2rem;
+        margin-right: 1rem;
+        margin-left: 1rem;
+        font-weight: bolder;
+    }
+    .barrinha a:hover{
+        color: white;
+    }
+</style>
+  

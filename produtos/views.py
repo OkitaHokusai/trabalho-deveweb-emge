@@ -32,3 +32,4 @@ def detalhar_produto(request, id_produto, slug_produto):
     return render(request, 'produtos/detalhes.html', contexto)
 
 
+

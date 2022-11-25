@@ -4,6 +4,8 @@ from django.db.models import signals
 from django.template.defaultfilters import slugify
 from django.urls import reverse
 
+
+
 class Base(models.Model):
 
     criado = models.DateField('Data de Criação', auto_now_add=True)
@@ -32,8 +34,9 @@ class Categoria(Base):
         'produtos:listar_produtos_por_categoria', 
         kwargs={
             'slug_categoria': self.slug
-            }
-        )
+        }
+    )
+
 
 
 class Produto(Base):
@@ -53,16 +56,14 @@ class Produto(Base):
 
     def __str__(self):
         return self.nome
-
     def get_absolute_url(self):
         return reverse(
         'produtos:detalhes_produto', 
         kwargs={
             'id_produto': self.id, 
             'slug_produto': self.slug
-            }
-        )
-
+        }
+    )
 
 
 def produto_pre_save(signal, instance, sender, **kwargs):
